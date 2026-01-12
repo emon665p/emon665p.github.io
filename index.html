@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Samsur Rahaman | Portfolio</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+</head>
+
+<body class="bg-gray-900 text-white">
+
+<!-- HERO -->
+<section class="h-screen flex flex-col justify-center items-center text-center">
+<h1 class="text-5xl font-bold">Samsur Rahaman</h1>
+<p class="text-xl text-blue-400 mt-4"><span id="typing"></span></p>
+
+<div class="flex gap-6 mt-6">
+<a href="https://www.linkedin.com/in/YOUR_LINKEDIN" target="_blank"><i class="fab fa-linkedin text-3xl"></i></a>
+<a href="https://github.com/YOUR_GITHUB" target="_blank"><i class="fab fa-github text-3xl"></i></a>
+</div>
+
+<a href="assets/resume.pdf" class="mt-8 bg-blue-600 px-6 py-3 rounded">Download CV</a>
+</section>
+
+<!-- ABOUT -->
+<section class="p-10 max-w-4xl mx-auto" data-aos="fade-up">
+<h2 class="text-3xl font-bold mb-4">About Me</h2>
+<p class="text-gray-300">
+BSc in CSE student with real experience in data analysis, customer support, and leadership. I have worked in corporate and NGO environments where accuracy, communication and problem solving were critical.
+</p>
+</section>
+
+<!-- SKILLS -->
+<section class="p-10 bg-gray-800" data-aos="fade-right">
+<h2 class="text-3xl font-bold text-center mb-6">Skills</h2>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+<div class="bg-gray-900 p-4 rounded">Data Management</div>
+<div class="bg-gray-900 p-4 rounded">Customer Relations</div>
+<div class="bg-gray-900 p-4 rounded">Call Handling</div>
+<div class="bg-gray-900 p-4 rounded">Team Leadership</div>
+<div class="bg-gray-900 p-4 rounded">Communication</div>
+<div class="bg-gray-900 p-4 rounded">Problem Solving</div>
+</div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="p-10" data-aos="fade-left">
+<h2 class="text-3xl font-bold mb-6">Experience</h2>
+<p>Call Center Representative – Innovative Solutions</p>
+<p>Campus Ambassador – Shomvob</p>
+<p>Data Analyst Intern – International Image Management Ltd.</p>
+<p>District Head – World Children Forum Bangladesh</p>
+</section>
+
+<!-- GITHUB PROJECTS -->
+<section class="p-10 bg-gray-800" data-aos="fade-up">
+<h2 class="text-3xl font-bold text-center mb-6">My GitHub Projects</h2>
+<div id="repo-list" class="grid md:grid-cols-3 gap-6"></div>
+</section>
+
+<footer class="text-center p-6 bg-black">© 2025 Samsur Rahaman</footer>
+
+<script>
+AOS.init();
+new Typed('#typing', {
+strings: ["CSE Student", "Data Analyst Intern", "Customer Support Professional"],
+typeSpeed: 50,
+backSpeed: 30,
+loop: true
+});
+
+fetch("https://api.github.com/users/YOUR_GITHUB/repos")
+.then(res => res.json())
+.then(data => {
+let out = "";
+data.slice(0,6).forEach(r => {
+out += `<div class="bg-gray-900 p-4 rounded">
+<h3>${r.name}</h3>
+<a href="${r.html_url}" class="text-blue-400">View</a>
+</div>`;
+});
+document.getElementById("repo-list").innerHTML = out;
+});
+</script>
+
+</body>
+</html>
